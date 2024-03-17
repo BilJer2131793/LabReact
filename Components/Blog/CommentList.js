@@ -1,0 +1,23 @@
+function CommentList({id}){
+    let [commentaires, setCommentaires] = React.useState('')
+
+    React.useState(()=>{
+        async function GetCommentaires(){
+            await fetch(`http://localhost:3000/Commentaires?Article=${id}`)
+            .then(response => response.json())
+            .then(json => setCommentaires(json))
+        }
+        GetCommentaires()
+    } ,[])
+
+
+    return(
+        <>
+            <div className="commentaires">
+                {Array.from(commentaires).map(commentaire=><Comment key={commentaire.id} commentaire={commentaire}></Comment>)}
+            </div>    
+        </>
+    )
+
+
+}
