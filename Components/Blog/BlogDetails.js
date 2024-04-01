@@ -1,7 +1,9 @@
-function BlogDetails({id}){
-
+function BlogDetails(){
+    const id = React.useContext(UserContext)
     let [publication, setPublication] = React.useState('')
     
+
+
     React.useEffect(()=>{
         async function GetContent(){
             await fetch(`http://localhost:3000/Publications?id=`+id)
@@ -12,7 +14,6 @@ function BlogDetails({id}){
     },[])
 
 
-    console.log("a")
     return(
     <>
         <div>

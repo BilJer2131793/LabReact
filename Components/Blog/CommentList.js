@@ -1,4 +1,5 @@
-function CommentList({id}){
+function CommentList(){
+    const id = React.useContext(UserContext)
     let [commentaires, setCommentaires] = React.useState('')
 
     React.useState(()=>{

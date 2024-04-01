@@ -1,19 +1,23 @@
+const UserContext = React.createContext();
 function Blog(){
     let urlParams = new URLSearchParams(window.location.search);
     let id = urlParams.get('id');
+
     return(
         <>
+        <UserContext.Provider value={id}>
             <div className="d-flex flex-column min-vh-100">
                 <Header></Header>
                 <div className="mx-5">
-                    <BlogDetails id={id}></BlogDetails>
+                    <BlogDetails></BlogDetails>
                     <div className="d-flex flex-column">
-                        <AddComment id={id}></AddComment>
-                        <CommentList id={id}></CommentList>  
+                        <AddComment></AddComment>
+                        <CommentList></CommentList>  
                     </div>
                 </div>  
                 <Footer></Footer>
             </div>
+        </UserContext.Provider>
         </>
     )
 }
